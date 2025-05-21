@@ -18,7 +18,7 @@ void readInputFile() {
 
 	// Get input file size
 	fseek( fptr, 0L, SEEK_END );
-	inputFileSize = ftell( fptr );
+	inputFileSize = ftell( fptr ) + 1;
 	rewind( fptr );
 
 	// Set the file buffer
@@ -46,19 +46,17 @@ void writeOutputFile() {
 	#ifdef DEBUG_MODE
 	printf(
 		"DEBUG: Try to write into the output file:\n"
-		"    Output File Address: %d\n",
-		"    Output File Content: %s\n",
-		outputFileAddress,
-		outputFile
+		"    Output File Address: %p\n",
+		outputFileAddress
 	);
 	#endif
 
-	FILE* fptr = fopen( outputFileAddress, "w" );
+	FILE* fptr = fopen( outputFileAddress, "wb" );
 	fprintf( fptr, outputFile );
 	fclose( fptr );
 
 	#ifdef DEBUG_MODE
-	printf( "DEBUG: Written output file successfully." );
+	printf( "DEBUG: Written output file successfully.\n" );
 	#endif
 }
 
@@ -67,6 +65,6 @@ void ioFree() {
 	free( outputFile );
 
 	#ifdef DEBUG_MODE
-	printf( "DEBUG: IO memories freed successfully." );
+	printf( "DEBUG: IO memories freed successfully.\n" );
 	#endif
 }
