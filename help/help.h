@@ -1,6 +1,8 @@
 #ifndef HELP_H
 #define HELP_H
 
+#include "./../version.h"
+
 // ==================== Declaration ====================
 void help();
 // ==================== Declaration ====================
@@ -9,7 +11,7 @@ void help();
 // ==================== Definition ====================
 void help() {
 	printf(
-		"Encrypt Files With ZLock\n"
+		"Encrypt Files With ZLock " ZLOCK_VERSION "\n"
 		"Description: ZLock is used to encrypt your files. You can easily encrypt a file without going back.\n"
 		"\nUsage Guideline: zlock myfile -o outfile [options]\n"
 		"\nOptions:\n"
