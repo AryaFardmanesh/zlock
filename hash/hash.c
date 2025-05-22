@@ -14,6 +14,10 @@ void zlockProcess() {
 			asciiIncDecrypt();
 		}
 	}
+
+	// Not found the hash algo
+	memcpy( outputFile, inputFile, inputFileSize );
+	return;
 }
 
 void xorEncrypt() {
