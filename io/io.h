@@ -5,9 +5,11 @@
 
 #include "../parse/parse.h"
 
+typedef unsigned char ubyte_t;
+
 size_t inputFileSize = 0;
-char* inputFile = NULL;
-char* outputFile = NULL;
+ubyte_t* inputFile = NULL;
+ubyte_t* outputFile = NULL;
 
 
 void readInputFile();
