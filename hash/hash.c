@@ -6,18 +6,25 @@ void zlockProcess() {
 			xorDecrypt();
 		}else if ( strcmp( hashAlgo, ZLOCK_HASH_ALGO_ASCII_INC ) == 0 ) {
 			asciiIncEncrypt();
+		}else {
+			goto failedToFindHash;
 		}
 	}else {
 		if ( strcmp( hashAlgo, ZLOCK_HASH_ALGO_XOR ) == 0 ) {
 			xorDecrypt();
 		}else if ( strcmp ( hashAlgo, ZLOCK_HASH_ALGO_ASCII_INC ) == 0 ) {
 			asciiIncDecrypt();
+		}else {
+			goto failedToFindHash;
 		}
 	}
 
-	// Not found the hash algo
-	memcpy( outputFile, inputFile, inputFileSize );
 	return;
+
+	failedToFindHash:
+		// Not found the hash algo
+		memcpy( outputFile, inputFile, inputFileSize );
+		return;
 }
 
 void xorEncrypt() {
