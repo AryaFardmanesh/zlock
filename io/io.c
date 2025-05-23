@@ -13,6 +13,7 @@ void readInputFile() {
 	FILE* fptr = fopen( inputFileAddress, "rb" );
 	if ( fptr == NULL ) {
 		fprintf( stderr, "Error: Cannot open the specified file.\n" );
+		ioFree();
 		exit( EXIT_FAILURE );
 	}
 
