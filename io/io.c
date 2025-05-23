@@ -28,6 +28,7 @@ void readInputFile() {
 
 	// Read the file
 	inputFile = fgets( inputFile, inputFileSize, fptr );
+	inputFile[ inputFileSize - 1 ] = (ubyte_t)0x00;
 
 	// Close the file
 	fclose( fptr );
