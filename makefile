@@ -1,10 +1,19 @@
 CC=gcc
-CFLAGS= -O2
+CFLAGS=-O2
+OUTTER_DEFINE=
 MAIN_FILE=./zlock.c
 OUTPUT_DIR=build
 OUTPUT_FILE=zlock
 INSTALL_NAME=zlock
 INSTALL_DIR=/usr/local/bin
+DEBUG_MODE=0
+
+#
+# Check debug mode
+#
+ifeq ($(DEBUG_MODE), 1)
+	OUTTER_DEFINE += -DDEBUG_MODE
+endif
 
 #
 # The default command
@@ -16,7 +25,7 @@ default: clean build
 #
 build:
 	mkdir $(OUTPUT_DIR)
-	$(CC) $(CFLAGS) $(MAIN_FILE) -o "$(OUTPUT_DIR)/$(OUTPUT_FILE)"
+	$(CC) $(CFLAGS) $(OUTTER_DEFINE) $(MAIN_FILE) -o "$(OUTPUT_DIR)/$(OUTPUT_FILE)"
 
 run: build
 	cd $(OUTPUT_DIR)
@@ -41,7 +50,8 @@ install: clean build
 # Unstall the Zlock
 #
 uninstall:
-	@echo Start to uninstall Zlock."
+	@echo "Start to uninstall Zlock."
 	rm -f $(INSTALL_DIR)/$(INSTALL_NAME)
-	@echo "Zlock installed successfully."
+	@echo "Zlock uninstalled successfully."
+
 
