@@ -15,7 +15,5 @@ void zlockProcess();
 
 void xorEncrypt();
 void xorDecrypt();
-void asciiIncEncrypt();
-void asciiIncDecrypt();
 
 #endif
