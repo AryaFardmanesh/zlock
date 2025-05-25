@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS= -Wall -O2
+CFLAGS= -O2
 MAIN_FILE=./zlock.c
 OUTPUT_DIR=build
 OUTPUT_FILE=zlock
