@@ -17,18 +17,17 @@ void readInputFile() {
 		exit( EXIT_FAILURE );
 	}
 
-	// Get input file size
-	fseek( fptr, 0L, SEEK_END );
-	inputFileSize = ftell( fptr ) + 1;
-	rewind( fptr );
+	inputFileSize = 0;
+	char* file = (char*)malloc( inputFileSize );
+	char fch;
 
-	// Set the file buffer
-	inputFile = ( char* )malloc( inputFileSize );
-	outputFile = ( char* )malloc( inputFileSize );
+	while ( ( fch = fgetc( fptr ) ) != EOF ) {
+		file = (char*)realloc( file, ++inputFileSize );
+		file[ inputFileSize - 1 ] = fch;
+	}
 
-	// Read the file
-	inputFile = fgets( inputFile, inputFileSize, fptr );
-	inputFile[ inputFileSize - 1 ] = (ubyte_t)0x00;
+	inputFile = file;
+	outputFile = (char*)malloc( inputFileSize );
 
 	// Close the file
 	fclose( fptr );

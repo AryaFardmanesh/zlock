@@ -26,7 +26,7 @@ void zlockProcess() {
 void xorEncrypt() {
 	size_t passLen = strlen( password );
 
-	for ( size_t i = 0; i < inputFileSize - 1; i++ ) {
+	for ( size_t i = 0; i < inputFileSize; i++ ) {
 		outputFile[ i ] = ( inputFile[ i ] ^ password[ i % passLen ] );
 	}
 }
